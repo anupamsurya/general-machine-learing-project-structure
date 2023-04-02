@@ -14,12 +14,12 @@ import os
 from src.utils import save_object
 
 @dataclass
-class DataTransformationconfig:
+class DataTransformationConfig:
     preprocessor_obj_file_path=os.path.join("artifacts","preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
-        self.data_transformation_config=DataTransformationconfig()
+        self.data_transformation_config=DataTransformationConfig()
 
     def get_data_transformer_object(self):
         '''
@@ -45,8 +45,8 @@ class DataTransformation:
 
             cat_pipeline = Pipeline(
                 steps=[
-                ("imputer", SimpleImputer(strategy="most_frequent"))
-                ("one_hot_incoder", OneHotEncoder())
+                ("imputer", SimpleImputer(strategy="most_frequent")),
+                ("one_hot_incoder", OneHotEncoder()),
                 ("scaler", StandardScaler(with_mean=False))
                 ]
             )
